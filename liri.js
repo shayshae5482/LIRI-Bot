@@ -7,11 +7,38 @@ var keys = require("./keys");
 var Spotify = require("node-spotify-api");
 //console.log(keys.Spotify);
 
+//OMDB variables//
+var movieTitle = process.argv[2];
+var queryUrl = "http://www.omdbapi.com/?t=" + movieTitle + "&r=&y=&plot=short&apikey=trilogy";
 
-//call the OMDB//
+
+//OMDB inquirer call//
+
+var inquirer = require("inquirer");
+
+// Created a series of questions
+inquirer.prompt([
+
+  {
+    type: "input",
+    name: "username",
+    movieTitle:"",
+  
+  },
+
+]).then(function() {
+console.log("\nYou did it")
+
+
+});
+
+
+
+
+
 var request = require("request");
 
-request("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=trilogy", function (error, response, body) {
+request(queryUrl, function (error, response, body) {
 
   if (!error && response.statusCode === 200) {
 
@@ -20,7 +47,12 @@ request("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=tril
 
 });
 
-///read file for spotify//
+
+
+
+
+
+///read file for spotify///////
 fs.readFile("random.txt", "utf8", function (err, data) {
   if (err) {
     return console.log(err);
