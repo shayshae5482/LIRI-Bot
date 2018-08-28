@@ -53,7 +53,7 @@ inquirer.prompt({
     type: 'list',
     name: 'q',
     message: 'What movie would you like watch?',
-    choices: [ 'Remember the Titans', 'Taken', 'The Fast and the Furious' ]
+    choices: [ 'Remember the Titans', 'Madea Goes To Jail', 'Taken', 'The Fast and the Furious', 'Salt']
   }).then(function(answers) {
     console.log(outputs[+answers.q - 1]);
     searchMovie(answers.q)
